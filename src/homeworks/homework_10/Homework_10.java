@@ -56,20 +56,15 @@ public class Homework_10 {
 
         //    Task 4 Программа просит пользователя ввести произвольное число Вывести сумму цифр этого числа
         System.out.println("Enter any number: ");
-        String number = scanner.nextLine();
-        int digitSum = 0;
-        i = 0;
+        int number = scanner.nextInt();
+        int sum = 0;
 
-        while (i < number.length()) {
-            char digitChar = number.charAt(i);
-
-            if (Character.isDigit(digitChar)) {
-                int digit = Character.getNumericValue(digitChar);
-                digitSum += digit;
-            }
-            i++;
+        while (number > 0) {
+            int digit = number % 10;
+            sum += digit;
+            number /= 10;
         }
 
-        System.out.println("Sum of digits of you number is: " + digitSum);
+        System.out.println("Sum of digits of you number is: " + sum);
     }
 }
