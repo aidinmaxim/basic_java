@@ -54,7 +54,11 @@ public class Homework_13_second {
     }
 
     public static void printReversedArray(int[] array, boolean needReverse) {
-        if (needReverse) printReversedArray(array);
+        if (needReverse) {
+            printReversedArray(array);
+        } else {
+            System.out.println(Arrays.toString(array));
+        }
     }
 
     public static void powerOfTwo(int power) {
@@ -69,7 +73,11 @@ public class Homework_13_second {
     public static void copyOfArray(int[] array, int newLength) {
         int[] copy = new int[newLength];
         for (int i = 0; i < newLength; i++) {
-            copy[i] = array[i];
+            if (array.length > i) {
+                copy[i] = array[i];
+            } else {
+                copy[i] = 0;
+            }
         }
 
         System.out.println("Reversed with new length 3: " + Arrays.toString(copy));
