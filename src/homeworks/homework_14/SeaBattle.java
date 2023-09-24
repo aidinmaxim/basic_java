@@ -1,6 +1,7 @@
 package homeworks.homework_14;
 
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * 24.09.2023
@@ -13,6 +14,10 @@ public class SeaBattle {
     private static int[][] field;
     private static Random random = new Random();
     private static final int size = 10;
+    private static int goodShots = 0;
+    private static int countAttempts = 0;
+    private static int sizeShips = 0;
+    private static int shipsAmount = 0;
 
     public static void main(String[] args) {
         startGame();
@@ -29,7 +34,26 @@ public class SeaBattle {
         }
 
         putShips();
-        showField();
+
+        readyToStart(size, sizeShips, shipsAmount);
+
+        while (goodShots < sizeShips) {
+            showField();
+
+            int xCoordinate;
+            int yCoordinate;
+
+            xCoordinate = getCoordinateFromPlayer("вертикали");
+            yCoordinate = getCoordinateFromPlayer("горизонтали");
+
+            boolean isGoodMove = makeMove(xCoordinate, yCoordinate);
+
+            if (isGoodMove) goodShots++;
+            countAttempts++;
+        }
+
+        System.out.println("Вы нашли все корабли! Поздравляю");
+        System.out.println("Кол-во ходов: " + countAttempts);
     }
 
     private static void showField() {
@@ -54,16 +78,15 @@ public class SeaBattle {
 
     private static char getSymbolByIntValue(int i) {
         switch (i) {
-            case 0:
-            case -1:
-                return '-';
             case 1:
             case 2:
             case 3:
             case 4:
                 return 9605;
-            case 8:
-                return 'O';
+            case 5:
+                return 'X';
+            case 9:
+                return '*';
             default:
                 return '-';
         }
@@ -109,6 +132,8 @@ public class SeaBattle {
                     }
                 }
                 surroundShipWithMinusOnes(decks);
+                sizeShips += decks;
+                shipsAmount += 1;
                 return;
             }
         }
@@ -171,5 +196,47 @@ public class SeaBattle {
                 }
             }
         }
+    }
+
+    private static int getCoordinateFromPlayer(String str) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.printf("Введите координату по %s (число от 1 до %d)\n", str, size);
+        int coordinate = 0;
+
+        if (scanner.hasNextInt()) {
+            coordinate = scanner.nextInt();
+        }
+
+        coordinate = (coordinate >= 0 && coordinate <= size - 1) ? coordinate : getCoordinateFromPlayer(str);
+
+
+        return coordinate;
+    }
+
+    private static boolean makeMove(int x, int y) {
+        if (field[x][y] == 1 || field[x][y] == 2 || field[x][y] == 3 || field[x][y] == 4) {
+            field[x][y] = 5;
+            return true;
+        } else if (field[x][y] == 0 || field[x][y] == -1) {
+            field[x][y] = 9;
+        }
+        return false;
+    }
+
+    private static void readyToStart(int size, int sizeBoat, int boatsAmount) {
+        // Выводит правила игры
+        // printf -> целое число %d; строку %s, число с запятой %f
+        System.out.printf("Игра морской бой ведется на квадратном поле %dx%d\n", size, size);
+//        System.out.println("Игра морской бой ведется на квадратном поле " + size + "x" + size + "\n");
+        System.out.printf("Количество кораблей на поле: %d\n", boatsAmount);
+//        System.out.println("Количество кораблей на поле: " + boatsAmount);
+        System.out.println("Игрок вводит координаты поля");
+        System.out.println("Программа отображает историю ходов и их результативность на игровом поле");
+        System.out.println("Игра заканчивается, когда все корабли найдены");
+        System.out.println("Удачи!");
+        System.out.println("Для получения подсказки - введите 911 при вводе координат");
+        System.out.println("=========================================================");
+        System.out.println();
+
     }
 }
