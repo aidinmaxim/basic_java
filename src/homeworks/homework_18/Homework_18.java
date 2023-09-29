@@ -8,10 +8,9 @@ package homeworks.homework_18;
  */
 public class Homework_18 {
     public static void main(String[] args) {
-        Dog dog = new Dog("Шарик", 30);
+        Dog dog = new Dog("Шарик", 54);
         dog.jump(25);
         dog.jump(40);
-        dog.train();
-        dog.jump(40);
+        dog.jump(108);
     }
 }

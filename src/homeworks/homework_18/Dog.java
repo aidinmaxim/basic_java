@@ -20,6 +20,7 @@ public class Dog {
     public void train() {
         if (jumpHeight >= maxJumpHeight) {
             System.out.println(name + " достиг максимальной высоты прыжка. Больше тренировок не требуется.");
+            return;
         }
 
         jumpHeight += 10;
@@ -48,7 +49,7 @@ public class Dog {
     }
 
     private boolean canTrainForBarrier(int barrierHeight) {
-        return (barrierHeight <= maxJumpHeight);
+        return (barrierHeight < maxJumpHeight);
     }
 }
 
