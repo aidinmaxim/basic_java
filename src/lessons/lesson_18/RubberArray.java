@@ -129,7 +129,7 @@ public class RubberArray {
          */
 
         //Option2
-        for (int i = 0; i < cursor; i++) {
+        for (int i = 0; i < cursor - 1; i++) {
             if (i < index) {
                 result[i] = array[i];
             } else { // i >= index
