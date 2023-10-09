@@ -17,8 +17,10 @@ public class Passenger extends Person {
     }
 
     public void info() {
+        System.out.println("=================================");
         super.info();
         System.out.println("Bus pass type: " + this.busPassType);
+        System.out.println("=================================");
     }
 
     public String getBusPassType() {

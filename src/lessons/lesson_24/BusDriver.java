@@ -15,8 +15,10 @@ public class BusDriver extends Person {
     }
 
     public void info() {
+        System.out.println("=================================");
         super.info();
         System.out.println("End of license: " + this.endOfLicense);
+        System.out.println("=================================");
     }
 
     public String getEndOfLicense() {
