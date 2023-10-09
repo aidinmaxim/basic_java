@@ -8,8 +8,8 @@ package lessons.lesson_24;
  */
 public class Main {
     public static void main(String[] args) {
-        Passenger passanger = new Passenger("Vasja", "monthly ticket");
-        passanger.info();
+        Passenger passenger = new Passenger("Vasja", "monthly ticket");
+        passenger.info();
 
         BusDriver busDriver = new BusDriver("Kolja", "10.11.2025");
         busDriver.info();
