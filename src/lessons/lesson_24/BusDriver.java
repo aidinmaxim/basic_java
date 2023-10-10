@@ -6,26 +6,34 @@ package lessons.lesson_24;
  *
  * @author Maksym Aidin
  */
-public class BusDriver extends Person {
-    private String endOfLicense;
+public class BusDriver extends Person{
 
-    public BusDriver(String name, String endOfLicense) {
-        super(name, "Bus driver");
-        this.endOfLicense = endOfLicense;
+    private String driveLicence;
+
+    private final int id;
+    private static int counter = 100;
+
+    public BusDriver(String name, int age, String driveLicence){
+        super(name, age);
+        this.driveLicence = driveLicence;
+        this.id = counter++;
     }
 
-    public void info() {
-        System.out.println("=================================");
-        super.info();
-        System.out.println("End of license: " + this.endOfLicense);
-        System.out.println("=================================");
+    public void  driverInfo() {
+        System.out.println("BusDriver "+ getName() + " id:" + id
+                + " (права номер: " + driveLicence + "); возраст: " + getAge());
     }
 
-    public String getEndOfLicense() {
-        return endOfLicense;
+    public String getDriveLicence() {
+        return driveLicence;
     }
 
-    public void setEndOfLicense(String endOfLicense) {
-        this.endOfLicense = endOfLicense;
+    public void setDriveLicence(String driveLicence) {
+        this.driveLicence = driveLicence;
     }
+
+    public int getId() {
+        return id;
+    }
+
 }

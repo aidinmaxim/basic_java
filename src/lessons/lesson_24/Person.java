@@ -7,17 +7,17 @@ package lessons.lesson_24;
  * @author Maksym Aidin
  */
 public class Person {
-    private String name;
-    private String role;
 
-    public Person(String name, String role) {
+    private String name;
+    private int age;
+
+    public Person(String name, int age) {
         this.name = name;
-        this.role = role;
+        this.age = age;
     }
 
     public void info() {
-        System.out.println("Name: " + this.name);
-        System.out.println("Role: " + this.role);
+        System.out.println("{" + name + " возраст: " + age + "}");
     }
 
     public String getName() {
@@ -28,11 +28,12 @@ public class Person {
         this.name = name;
     }
 
-    public String getRole() {
-        return role;
+    public int getAge() {
+        return age;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setAge(int age) {
+        this.age = age;
+        // isKind = age < 15; так мы сделать в родителе не можем. Проблема. Надо будет решать
     }
 }

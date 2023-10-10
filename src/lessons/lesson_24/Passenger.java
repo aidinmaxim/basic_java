@@ -8,27 +8,39 @@ package lessons.lesson_24;
  */
 public class Passenger extends Person {
 
-    private String busPassType;
+    private final int id;
+    private int ticketNumber;
+    //Проблема. Поле устанавливается 1 раз в конструкторе. Сеттер поля age может изменить возраст.
+    // Родительский метод setAge ничего не знает о поле наследника isKind -> не может его поменять
+    private boolean isKind;
+    //TODO решить проблему изменения возраста в сеттере
 
-    public Passenger(String name, String busPassType) {
-        super(name, "Passenger");
+    private static int counter;
 
-        this.busPassType = busPassType;
+
+    public Passenger(String name, int age, int ticketNumber){
+        super(name, age);
+        this.id = counter++;
+        this.ticketNumber = ticketNumber;
+        this.isKind = age < 15;
     }
 
-    public void info() {
-        System.out.println("=================================");
+    public void passengerInfo() {
+        System.out.print("Passenger id:" + id + " (билет №:" + ticketNumber + "), isKind: " + (isKind ? "Да" : "Нет")+ " : ");
         super.info();
-        System.out.println("Bus pass type: " + this.busPassType);
-        System.out.println("=================================");
+
     }
 
-    public String getBusPassType() {
-        return busPassType;
+    public int getId() {
+        return id;
     }
 
-    public void setBusPassType(String busPassType) {
-        this.busPassType = busPassType;
+    public int getTicketNumber() {
+        return ticketNumber;
+    }
+
+    public void setTicketNumber(int ticketNumber) {
+        this.ticketNumber = ticketNumber;
     }
 
 
