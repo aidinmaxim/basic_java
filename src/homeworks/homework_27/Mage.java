@@ -13,6 +13,6 @@ public class Mage extends GameCharacter{
 
     @Override
     public void attack() {
-        System.out.println(name + " кастует магичесское заклинание.");
+        System.out.println(name + " использует магичесское заклинание.");
     }
 }
